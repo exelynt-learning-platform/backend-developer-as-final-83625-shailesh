@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: booking-system
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/booking_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:Stark@1945}
+  jpa:
+    hibernate:
+      ddl-auto: update          # use 'validate' + migrations in production
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  jwt:
+    # Must be at least 32 characters (256 bits) for HS256
+    secret: ${JWT_SECRET:qwertyuioplkjhgfdsazxcvbnmmnbvcxzasdfghjklpoiuytrewq}
+    expiration-ms: ${JWT_EXPIRATION_MS:3600000}   # 1 hour
+
+server:
+  port: ${SERVER_PORT:8080}
+
+springdoc:
+  swagger-ui:
+    persist-authorization: true
+    operations-sorter: method
